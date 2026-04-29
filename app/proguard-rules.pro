@@ -1,0 +1,3 @@
+-keep class androidx.health.** { *; }
+-keep class com.stresswatch.wear.** { *; }
+-dontwarn com.google.common.**

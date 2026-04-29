@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Sfondo scuro -->
+    <path
+        android:fillColor="#0A0A0F"
+        android:pathData="M0,0h108v108h-108z"/>
+    <!-- Cerchio radar -->
+    <path
+        android:strokeColor="#42A5F5"
+        android:strokeWidth="2"
+        android:fillColor="@android:color/transparent"
+        android:pathData="M54,20 A34,34 0 1,1 53.99,20Z"/>
+    <!-- Braccio radar -->
+    <path
+        android:strokeColor="#66BB6A"
+        android:strokeWidth="2.5"
+        android:pathData="M54,54 L78,30"/>
+    <!-- Punto centrale -->
+    <path
+        android:fillColor="#42A5F5"
+        android:pathData="M54,54 m-4,0 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0"/>
+    <!-- Cuore -->
+    <path
+        android:fillColor="#EF5350"
+        android:pathData="M54,72 C54,72 42,64 42,57 C42,52 47,48 54,55 C61,48 66,52 66,57 C66,64 54,72 54,72Z"/>
+</vector>
