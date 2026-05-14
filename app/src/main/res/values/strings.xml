@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">StressWatch</string>
+    <string name="style_dynamic_colors_title">Colori Dinamici Stress</string>
+    <string name="style_dynamic_colors_desc">Cambia il colore dell\'orario in base al tuo livello di stress.</string>
+
 </resources>

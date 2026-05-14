@@ -35,6 +35,10 @@ object StressMonitorController {
     private const val maxHistoryPoints = 60
 
     fun startMonitoring(context: Context) {
+        val hasPermission = ContextCompat.checkSelfPermission(context, android.Manifest.permission.BODY_SENSORS) == android.content.pm.PackageManager.PERMISSION_GRANTED
+        _uiState.value = _uiState.value.copy(hasPermission = hasPermission)
+        
+        if (!hasPermission) return
         if (monitorJob?.isActive == true) return
 
         // Avvia il Foreground Service per mantenere vivo il processo
@@ -47,9 +51,18 @@ object StressMonitorController {
         _uiState.value = _uiState.value.copy(isMonitoring = true)
 
         monitorJob = scope.launch {
+            var lastLevel: StressLevel? = null
+            val vibrator = context.getSystemService(Context.VIBRATOR_SERVICE) as android.os.Vibrator
+
             repo.sensorDataFlow().collect { data ->
                 val newPoint = HistoryPoint(score = data.stressScore, timestamp = data.timestamp)
                 val history = (_uiState.value.history + newPoint).takeLast(maxHistoryPoints)
+
+                // Feedback Aptico se lo stress diventa alto
+                if (data.stressLevel == StressLevel.STRESSED && lastLevel != StressLevel.STRESSED) {
+                    vibrator.vibrate(android.os.VibrationEffect.createOneShot(300, android.os.VibrationEffect.DEFAULT_AMPLITUDE))
+                }
+                lastLevel = data.stressLevel
 
                 _uiState.value = _uiState.value.copy(
                     current = data,
@@ -57,7 +70,9 @@ object StressMonitorController {
                 )
             }
         }
+
     }
+
 
     fun stopMonitoring(context: Context) {
         monitorJob?.cancel()

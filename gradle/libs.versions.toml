@@ -8,6 +8,8 @@ coroutines = "1.8.1"
 lifecycle = "2.8.5"
 activity-compose = "1.9.2"
 splashscreen = "1.0.1"
+watchface = "1.2.1"
+
 
 [libraries]
 # AndroidX Core
@@ -37,6 +39,15 @@ coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutin
 
 # Guava (richiesto da health-services)
 guava = { group = "com.google.guava", name = "guava", version = "33.2.1-android" }
+
+# Watch Face
+androidx-watchface = { group = "androidx.wear.watchface", name = "watchface", version.ref = "watchface" }
+androidx-watchface-complications-rendering = { group = "androidx.wear.watchface", name = "watchface-complications-rendering", version.ref = "watchface" }
+androidx-watchface-data = { group = "androidx.wear.watchface", name = "watchface-data", version.ref = "watchface" }
+androidx-watchface-editor = { group = "androidx.wear.watchface", name = "watchface-editor", version.ref = "watchface" }
+androidx-watchface-style = { group = "androidx.wear.watchface", name = "watchface-style", version.ref = "watchface" }
+androidx-watchface-complications-data = { group = "androidx.wear.watchface", name = "watchface-complications-data", version.ref = "watchface" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

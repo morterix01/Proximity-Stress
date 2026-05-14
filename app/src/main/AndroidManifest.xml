@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_HEALTH" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
 
     <!-- Dichiara che è un'app Wear OS -->
     <uses-feature android:name="android.hardware.type.watch" />
@@ -47,5 +49,27 @@
             android:foregroundServiceType="health"
             android:exported="false" />
 
+        <!-- Watch Face Service -->
+        <service
+            android:name=".StressWatchFaceService"
+            android:exported="true"
+            android:label="StressWatch"
+            android:permission="android.permission.BIND_WALLPAPER">
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+                <category android:name="com.google.android.wearable.watchface.category.WATCH_FACE" />
+            </intent-filter>
+            <meta-data
+                android:name="com.google.android.wearable.watchface.preview"
+                android:resource="@mipmap/ic_launcher" />
+            <meta-data
+                android:name="com.google.android.wearable.watchface.preview_circular"
+                android:resource="@mipmap/ic_launcher" />
+            <meta-data
+                android:name="android.service.wallpaper"
+                android:resource="@xml/watch_face" />
+        </service>
+
     </application>
 </manifest>
+

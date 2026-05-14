@@ -63,4 +63,13 @@ dependencies {
     implementation(libs.lifecycle.runtime.ktx)
     implementation(libs.lifecycle.viewmodel.compose)
     implementation(libs.coroutines.android)
+
+    // Watch Face
+    implementation(libs.androidx.watchface)
+    implementation(libs.androidx.watchface.complications.rendering)
+    implementation(libs.androidx.watchface.data)
+    implementation(libs.androidx.watchface.editor)
+    implementation(libs.androidx.watchface.style)
+    implementation(libs.androidx.watchface.complications.data)
 }
+
